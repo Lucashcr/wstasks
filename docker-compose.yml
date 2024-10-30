@@ -1,0 +1,56 @@
+services:
+  redis:
+    image: redis:7
+    container_name: wstasks_redis
+    ports:
+      - "6379:6379"
+    sysctls:
+      - net.core.somaxconn=1024
+  
+  database:
+    image: postgres:16
+    container_name: wstasks_database
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=wstasks
+
+  celery_worker:
+    build: ./backend
+    user: "1001:1001"
+    container_name: wstasks_celery_worker
+    command: celery -A main.celery worker --loglevel=info
+    depends_on:
+      - redis
+
+  flower:
+    build: ./backend
+    container_name: wstasks_flower
+    command: celery -A main.celery flower --port=5555
+    ports:
+      - "5555:5555"
+    environment:
+      - FLOWER_BASIC_AUTH=admin:password
+    depends_on:
+      - celery_worker
+
+  backend:
+    build: ./backend
+    container_name: wstasks_backend
+    command: uvicorn main:app --host 0.0.0.0 --port 8000
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+    depends_on:
+      - celery_worker
+  
+  frontend:
+    build: ./frontend
+    container_name: wstasks_frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
