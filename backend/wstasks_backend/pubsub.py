@@ -1,8 +1,8 @@
 import asyncio
 import json
 
-from config.redis import make_redis
-from ws_connections import WebSocketConnectionsSingleton
+from wstasks_backend.config.redis import make_redis
+from wstasks_backend.ws_connections import WebSocketConnectionsSingleton
 
 
 async def notify_ws_clients() -> None:

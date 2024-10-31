@@ -1,18 +1,19 @@
 [tool.poetry]
-name = "wstasks-backend"
+name = "wstasks_backend"
 version = "0.1.0"
 description = ""
 license = "MIT"
 authors = ["Lucas Rocha <lucash.rocha@hotmail.com>"]
 readme = "README.md"
 package-mode = false
+include = ["wstasks_backend"]
 
 
 [tool.poetry.dependencies]
 python = "^3.12"
 flower = "^2.0.1"
 celery = {extras = ["redis"], version = "^5.4.0"}
-fastapi = "^0.115.3"
+fastapi = {extras = ["standard"], version = "^0.115.4"}
 python-dotenv = "^1.0.1"
 uvicorn = "^0.32.0"
 peewee = "^3.17.7"

@@ -2,7 +2,7 @@ from functools import lru_cache
 
 from redis import Redis
 
-from config.settings import REDIS_CONNECTION
+from wstasks_backend.config.settings import REDIS_CONNECTION
 
 
 @lru_cache

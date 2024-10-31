@@ -2,9 +2,11 @@ import os
 
 import peewee as pw
 
+from wstasks_backend.config.settings import DATABASE_URL
+
 
 db = pw.PostgresqlDatabase(
-    os.environ["DATABASE_URL"]
+    DATABASE_URL
 )
 
 

@@ -2,7 +2,7 @@ from functools import lru_cache
 
 from celery import Celery
 
-from config import settings
+from wstasks_backend.config import settings
 
 
 @lru_cache

@@ -5,8 +5,8 @@ import time
 from celery import Task, shared_task
 from celery.result import AsyncResult
 
-from config.database import Task as DBTask
-from config.redis import make_redis
+from wstasks_backend.config.database import Task as DBTask
+from wstasks_backend.config.redis import make_redis
 
 class BaseTask(Task):
     def update_status_on_database(self, task_id) -> None:

@@ -16,3 +16,5 @@ REDIS_CONNECTION = {
     "port": int(os.environ["REDIS_PORT"]),
     "db": os.environ["REDIS_DB"],
 }
+
+DATABASE_URL = os.environ["DATABASE_URL"]
