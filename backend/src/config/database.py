@@ -1,8 +1,10 @@
+import os
+
 import peewee as pw
 
 
 db = pw.PostgresqlDatabase(
-    "wstasks", user="admin", password="password", host="database", port=5432
+    os.environ["DATABASE_URL"]
 )
 
 
