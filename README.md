@@ -44,7 +44,7 @@ Este é um projeto full stack de uma lista de tarefas desenvolvido com **FastAPI
 
 ```bash
 git clone https://github.com/Lucashcr/wstasks
-cd task-list-app
+cd wstasks
 ```
 
 2. Configure as variáveis de ambiente:
