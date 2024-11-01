@@ -15,9 +15,7 @@ async function createNewTask(updateTasksCallback: () => Promise<void>) {
 
   if (response.ok) {
     updateTasksCallback();
-    toast.success("Task created successfully", {
-      position: "top-right",
-    });
+    toast.success("Task created successfully");
   } else {
     toast.error("Failed to create task");
   }

@@ -94,7 +94,7 @@ function App() {
           toastStyle[context?.type || "default"] +
           " relative flex p-3 mb-2 min-h-10 rounded-md justify-between overflow-hidden cursor-pointer"
         }      
-        position="top-right"
+        position="top-left"
         autoClose={3000}
         closeOnClick
         pauseOnFocusLoss
