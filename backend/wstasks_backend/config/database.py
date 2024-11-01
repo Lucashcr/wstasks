@@ -1,13 +1,9 @@
-import os
-
 import peewee as pw
 
 from wstasks_backend.config.settings import DATABASE_URL
 
 
-db = pw.PostgresqlDatabase(
-    DATABASE_URL
-)
+db = pw.PostgresqlDatabase(DATABASE_URL)
 
 
 if not db.connect():

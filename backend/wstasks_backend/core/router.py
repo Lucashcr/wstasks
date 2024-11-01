@@ -6,9 +6,9 @@ from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.routing import APIRouter
 
 from wstasks_backend.config.database import Task as DBTask
-from wstasks_backend.config.redis import make_redis
-from wstasks_backend.models import TasksListResponse
-from wstasks_backend.tasks import generic_task
+from wstasks_backend.config.redis import redis
+from wstasks_backend.core.serializers import TasksListResponse
+from wstasks_backend.core.tasks import generic_task
 from wstasks_backend.ws_connections import WebSocketConnectionsSingleton
 
 
@@ -38,7 +38,6 @@ def setup_router(app: FastAPI) -> None:
         DBTask.create(id=result.id, name=generic_task.name, status=result.status)
 
         message = {"task_id": result.id, "status": result.status}
-        redis = make_redis()
         redis.publish("tasks_notifications", json.dumps(message))
 
         return {"task": result.id}

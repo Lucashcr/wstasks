@@ -21,14 +21,14 @@ services:
     build: ./backend
     user: "1001:1001"
     container_name: wstasks_celery_worker
-    command: celery -A main.celery worker --loglevel=info
+    command: celery -A wstasks_backend.config.celery.celery worker --loglevel=info
     depends_on:
       - redis
 
   flower:
     build: ./backend
     container_name: wstasks_flower
-    command: celery -A main.celery flower --port=5555
+    command: celery -A wstasks_backend.config.celery.celery flower --port=5555
     ports:
       - "5555:5555"
     environment:

@@ -3,7 +3,7 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 
-from wstasks_backend.pubsub import notify_ws_clients
+from wstasks_backend.core.pubsub import notify_ws_clients
 
 
 @asynccontextmanager
